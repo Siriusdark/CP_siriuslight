@@ -17,13 +17,12 @@ ll pow(ll a, ll b){
 }
 
 ll gcd(ll a, ll b){
-	if(a < b) return gcd(b,a);
 	if(!b)	return a;
 	return gcd(b, a % b);
 }
 
 int main(){
     FIO;
-	
+    
     return 0;
 }
