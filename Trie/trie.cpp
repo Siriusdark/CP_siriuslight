@@ -19,13 +19,13 @@ void insert(int x){
     for(int i = 29; i >= 0; i--){
         int bit = (x >> i) & 1;
         if(temp -> node[bit] != NULL){
+	    temp = temp -> node[bit];
             temp -> cnt++;
-            temp = temp -> node[bit];
             continue;
         }
         temp -> node[bit] = getnode();
-        temp -> cnt++;
         temp = temp -> node[bit];
+        temp -> cnt++;
     }
     temp -> isend = 1;
 }
@@ -52,4 +52,3 @@ void erase(int x){
     }
     temp -> isend = 0;
 }
-
