@@ -1,7 +1,5 @@
-#include<bits/stdc++.h>
-using namespace std;
 
- struct query{
+struct query{
     int l, r, id, no;
 };
 
@@ -10,18 +8,23 @@ int n, m, a[N], BLOCK;
 struct query q[N];
 int ans[N];
 
-bool cmp(struct query a, struct query b){
-    if(a.l/BLOCK != b.l/BLOCK)
-        return a.l < b.l;
-    return a.r < b.r;
+inline bool cmp(const struct query &a, const struct query &b){
+	int num = a.l / block;
+	if (num != b.l / block)
+		return a.l < b.l;
+	if (num&1)
+		return a.r < b.r;
+	return a.r > b.r;
 }
 
-void add(int pos){
+inline void add(int pos){
 
 }
-void del(int pos){
+
+inline void del(int pos){
 
 }
+
 int main(){
 ios_base::sync_with_stdio(false);
 cin.tie(0);
@@ -68,4 +71,3 @@ cout.tie(0);
     }
 
 }
-
