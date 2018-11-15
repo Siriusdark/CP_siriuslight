@@ -9,9 +9,24 @@
 using namespace std;
 using namespace __gnu_pbds;
 
+#define TRACE
+#ifdef TRACE
+#define trace(...) __f(#__VA_ARGS__, __VA_ARGS__)
+template <typename Arg1>
+void __f(const char* name, Arg1&& arg1){
+  cerr << name << " : " << arg1 << std::endl;
+}
+template <typename Arg1, typename... Args>
+void __f(const char* names, Arg1&& arg1, Args&&... args){
+  const char* comma = strchr(names + 1, ','); cerr.write(names, comma - names) << " : " << arg1<<" | ";__f(comma+1, args...);
+}
+#else
+#define trace(...)
+#endif
+
 typedef long long ll;
 typedef long double ld;
-typedef tree<ll,null_type,less<ll>,rb_tree_tag,tree_order_statistics_node_update> pbds;
+typedef tree<ll,null_type,less<ll>,rb_tree_tag,tree_order_statistics_node_update> ordered_set;
 
 const ll inf = 1e9+100, N = 2e5+5;
 const ll INF = 1e18+100, MOD = 1e9+7;
@@ -22,10 +37,10 @@ ll gcd(ll a,ll b){if(!b)return a;return gcd(b,a%b);}
 ll inv(ll a, ll m = MOD){return powmod(a,m-2,m);}
 ll lcm(ll a,ll b){return(a*b)/gcd(a,b);}
 
-//pbds X;
+//ordered_set X;
 //X.insert(3);
 //X.order_of_key(3) no of elements less than 3
-//*X.find_by_order(n) nth smallest element
+//*X.find_by_order(n) nth greatest element(0-indexed)
 
 int main(){
     FIO;
