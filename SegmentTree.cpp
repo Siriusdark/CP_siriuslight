@@ -68,12 +68,4 @@ class SegTree{
     }
 };
 
-long long brute(int l, int r){
-    long long res = 0;
-    for(int i = l; i <= r; ++i){
-        res += a[i];
-    }
-    return res;
-}
-
 SegTree <long long> ST;
